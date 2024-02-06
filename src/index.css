@@ -1,0 +1,15 @@
+h1 {
+    color: aliceblue;
+    justify-self: center;
+    align-self: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -5,6 +5,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <h1>Tic Tac Toe</h1>
     <App />
   </React.StrictMode>,
 )

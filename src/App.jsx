@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css'
 
 function Square({ value, onSquareClick }) {
   return (
@@ -15,9 +16,9 @@ function Board({ xIsNext, squares, onPlay }) {
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = 'X';
+      nextSquares[i] = '×';
     } else {
-      nextSquares[i] = 'O';
+      nextSquares[i] = '○';
     }
     onPlay(nextSquares);
   }
@@ -27,12 +28,11 @@ function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     status = 'Winner: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'Next player: ' + (xIsNext ? '×' : '○');
   }
 
   return (
     <>
-      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -48,6 +48,7 @@ function Board({ xIsNext, squares, onPlay }) {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      <div className="status">{status}</div>
     </>
   );
 }
@@ -71,14 +72,16 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'Move #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'Start Again'
     }
     return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
-      </li>
+      <>
+        <ul key={move} className='history-container'>
+          <button className='history-move' onClick={() => jumpTo(move)}>{description}</button>
+        </ul>
+      </>
     );
   });
 
@@ -88,7 +91,7 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <ul className='moves'>{moves}</ul>
       </div>
     </div>
   );
@@ -113,3 +116,5 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+// TODO: reset button

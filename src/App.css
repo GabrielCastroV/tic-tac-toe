@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(24, 30, 47);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.square {
+    background-color: #e9ecf5;
+    height: 7.5rem;
+    width: 7.5rem;
+    font-size: 6rem;
+    text-align: center;
+    padding: 0;
+    float: left;
+    cursor: pointer;
+}
+
+.square:focus {
+    outline: none;
+}
+
+.moves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2rem;
+}
+
+.game-info {
+    min-height: 3rem;
+    width: 22rem;
+}
+
+.history-move {
+    padding: 6px;
+    border-radius: .3rem;
+    height: 2.5rem;
+    cursor: pointer;
+    background-color: #e9ecf5;
+}
+
+.history-move:hover {
+    background-color: rgb(224, 228, 231);
+}
+
+.history-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.game-board {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.status {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    margin-top: 16px;
+    font-size: xx-large;
+    color: white;
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
