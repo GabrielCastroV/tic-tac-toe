@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 
+// Boton de juegos
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -9,17 +10,23 @@ function Square({ value, onSquareClick }) {
   );
 }
 
+// Tablero y funcion principal
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+
+    // para no mutar el props original.
     const nextSquares = squares.slice();
+
+    // El marcador del tablero
     if (xIsNext) {
       nextSquares[i] = '×';
     } else {
       nextSquares[i] = '○';
     }
+
     onPlay(nextSquares);
   }
 
@@ -53,9 +60,11 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
+// Historial de juego
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  // Generador de true o false usando el dividendo (modulo).
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -97,6 +106,7 @@ export default function Game() {
   );
 }
 
+// Verificar el ganador
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
